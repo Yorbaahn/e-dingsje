@@ -14,11 +14,9 @@
   <body>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMXhHHlx29lYEV05oe2BWR7PV4P5HwdXQ&callback=initMap">
     </script>
-
     <div id="zombie_map"></div>
     <script>
         var zombie_map;
-        var old_position
         var all_markers = []
         var data = `51.15619435800123 2.972119009925791 weapons.png
                     51.15657455173307 2.972043908073374 hospital.png
@@ -31,7 +29,6 @@
                     51.156529672090784 2.9707447662971163 weapons.png`;
         var markers = data.split("\n")
         function initMap() {
-
           zombie_map = new google.maps.Map(document.getElementById('zombie_map'), {
             zoom: 18,
             center: {lat: 51.156538, lng: 2.971384}
@@ -55,6 +52,7 @@
               map: zombie_map,
               icon: emoji
               });
+            var marker_old_position = new google.maps.Marker();
             all_markers.push(marker);
         }
       }
@@ -63,7 +61,7 @@
         var player_location = new google.maps.Marker({
           position: pos,
           map: zombie_map,
-          icon: emoji
+          icon: player_location
         })
       }
     </script>
